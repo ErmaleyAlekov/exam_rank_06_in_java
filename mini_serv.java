@@ -24,7 +24,7 @@ public class mini_serv
 	{
 		if (args.length != 1)
 		{
-			System.out.println("Wrong number of arguments");
+			System.err.println("Wrong number of arguments");
 			System.exit(1);
 		}
 		try
@@ -34,8 +34,8 @@ public class mini_serv
 		}
 		catch (Exception e)
 		{
-			System.out.println("Fatal error");
-			e.printStackTrace();
+			System.err.println("Fatal error");
+			System.exit(1);
 		}
 	}
 
