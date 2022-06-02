@@ -71,7 +71,8 @@ public class mini_serv
 				Thread t = new Thread(handler);
 				t.start();
 			}
-		}catch (Exception e) {e.printStackTrace();}
+		}catch (Exception e) {System.err.println("Fatal error");
+			System.exit(1);}
 	}
 
 	class ClientHandler implements Runnable
@@ -99,13 +100,15 @@ public class mini_serv
 				String message = null;
 				while((message = br.readLine())!=null) {sendMessage(nickName+getId(pw)+": "+message, pw);}
 			}
-			catch (Exception e) {e.printStackTrace();}
+			catch (Exception e) {System.err.println("Fatal error");
+				System.exit(1);}
 			finally
 			{
 				System.out.println("server: "+nickName+getId(pw)+" just left");
 				sendMessage("server: "+nickName+getId(pw)+" just left",pw);
 				removeOut(pw);
-				try {socket.close();} catch (Exception e) {e.printStackTrace();}
+				try {socket.close();} catch (Exception e) {System.err.println("Fatal error");
+					System.exit(1);}
 			}
 		}
 	}
